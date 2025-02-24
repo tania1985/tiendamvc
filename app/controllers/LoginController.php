@@ -12,7 +12,7 @@ class LoginController extends Controller{
     public function login(...$params){
         if(isset($_POST["username"])){
             $user=User::where("username",$_POST["username"]);
-            var_dump($_POST);
+            var_dump($user);
             exit();
         }else{
            header("Location:".base_url()."login"); 
