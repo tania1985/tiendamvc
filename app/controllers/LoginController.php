@@ -25,7 +25,7 @@ class LoginController extends Controller{
     }
 
     public function json(){
-        $actores=Actor::where("first_name","like","P%")->get();
+        $actores=User::where("first_name","like","P%")->get();
         $datos=[
             "mensaje"=>"Listado actores empiezan P",
             "listado"=>$actores
