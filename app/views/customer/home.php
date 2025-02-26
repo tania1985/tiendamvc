@@ -19,6 +19,7 @@
                 <span class="navbar-text">
                     Listado clientes
                 </span>
+                <a href="<?=base_url()?>customer/newCustomer" class="btn btn-primary">Nuevo Cliente</a>
             </div>
         </nav>
         <table class="table table-dark table-striped">
@@ -37,7 +38,7 @@
                         <td>
                             <i class="fa-solid fa-user-pen"></i>
                             <i class="fa-solid fa-trash"></i>
-                           <a href="<?=base_url()?>customer/show/<?= $customer->customer_id ?>"><i class="fa-solid fa-eye"></i></a>
+                            <a href="<?=base_url()?>customer/show/<?= $customer->customer_id ?>"><i class="fa-solid fa-eye"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
