@@ -1,6 +1,6 @@
 <?php
-require 'vendor/autoload.php';
-require 'config/config.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/config.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -22,3 +22,4 @@ $capsule->setAsGlobal();
 
 // Arrancar Eloquent ORM
 $capsule->bootEloquent();
+?>
