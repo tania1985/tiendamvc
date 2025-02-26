@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="<?=base_url()?>assets/css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -75,25 +75,30 @@
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
             <form action="<?=base_url()?>login/register" method="post">
+              <!-- Mostrar mensaje de error si está presente -->
+              <?php if (isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                  <?= $error ?>
+                </div>
+              <?php endif; ?>
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
-                    <input name= "username" type="text" id="form3Example1" class="form-control" />
+                    <input name="username" type="text" id="form3Example1" class="form-control" required />
                     <label class="form-label" for="form3Example1">Nombre de usuario</label>
                   </div>
                 </div>
-               
+              </div>
 
-            
               <!-- Password input -->
               <div data-mdb-input-init class="form-outline mb-4">
-                <input name="password" type="password" id="form3Example4" class="form-control" />
+                <input name="password" type="password" id="form3Example4" class="form-control" required />
                 <label class="form-label" for="form3Example4">Password</label>
               </div>
 
-               <!-- Confirm Password input -->
-               <div data-mdb-input-init class="form-outline mb-4">
+              <!-- Confirm Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
                 <input name="password_repeat" type="password" id="form3Example5" class="form-control" required />
                 <label class="form-label" for="form3Example5">Confirmar Password</label>
               </div>
@@ -114,19 +119,19 @@
               <!-- Register buttons -->
               <div class="text-center">
                 <p>or sign up with:</p>
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                   <i class="fab fa-facebook-f"></i>
                 </button>
 
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                   <i class="fab fa-google"></i>
                 </button>
 
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                   <i class="fab fa-twitter"></i>
                 </button>
 
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
                   <i class="fab fa-github"></i>
                 </button>
               </div>

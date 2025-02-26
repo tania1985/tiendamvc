@@ -19,15 +19,12 @@ class LoginController extends Controller{
 
             }else{
                 $error="User or pass incorrect";
-                $this->view("login",[$error]);
+                $this->view("login",["error" => $error]);
             }
-            //var_dump($user->password);
-            
             exit();
         }else{
            header("Location: ".base_url()."login");
         }
-       
     }
 
     public function register(...$params){
@@ -39,21 +36,30 @@ class LoginController extends Controller{
 
             if ($username && $password && $password_repeat) {
                 if ($password === $password_repeat) {
-                    // Crear un nuevo usuario
-                    $user = new User();
-                    $user->username = $username;
-                    $user->password = password_hash($password, PASSWORD_BCRYPT); // Encriptar la contraseña
-                    $user->save();
+                    // Comprobar si el usuario ya existe
+                    $existingUser = User::where("username", $username)->first();
+                    if ($existingUser) {
+                        $error = "El nombre de usuario ya está en uso.";
+                        $this->view("register", ["error" => $error]);
+                    } else {
+                        // Crear un nuevo usuario
+                        $user = new User();
+                        $user->username = $username;
+                        $user->password = password_hash($password, PASSWORD_BCRYPT); // Encriptar la contraseña
+                        $user->save();
 
-                    // Redirigir al usuario a la página de login
-                    header("Location:".base_url()."login");
+                        // Redirigir al usuario a la página de login
+                        header("Location:".base_url()."login");
+                    }
                 } else {
                     // Mostrar un mensaje de error si las contraseñas no coinciden
-                    echo "Las contraseñas no coinciden.";
+                    $error = "Las contraseñas no coinciden.";
+                    $this->view("register", ["error" => $error]);
                 }
             } else {
                 // Mostrar un mensaje de error si faltan datos
-                echo "Por favor, complete todos los campos.";
+                $error = "Por favor, complete todos los campos.";
+                $this->view("register", ["error" => $error]);
             }
         } else {
             // Mostrar la vista de registro
